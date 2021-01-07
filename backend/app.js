@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
+const adminRoute = require('./routes/admin');
+
 require('dotenv').config();
 
 const app = express();
@@ -15,12 +17,12 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/static", express.static(path.join('${__dirname}/public')));
 
-app.get('/', (req, res) => res.send('Home Route'));
+app.use('/', adminRoute);
 
 const port = process.env.PORT || 8080;
 
 mongoose
-    .connect(process.env.DB_HOST, {
+    .connect("mongodb+srv://admin-denzel:Test123@cluster0.j9wp6.mongodb.net/exercisesDB", {
         useCreateIndex: true,
         useUnifiedTopology: true,
         useNewUrlParser: true,
