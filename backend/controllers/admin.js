@@ -36,3 +36,17 @@ exports.postExercise = (req, res) => {
     console.log('Exercise added to database');
     res.status(201).redirect('/');
 };
+
+exports.postDelete = async (req, res) => {
+  const exerciseId = req.body.exerciseId;
+
+  const exercise = await Exercise.findByIdAndRemove(exerciseId, (data) => data);
+
+  try {
+    console.log(exercise);
+    console.log('Item Deleted');
+    res.redirect('/');
+  } catch (err) {
+    console.log(err);
+  }
+};

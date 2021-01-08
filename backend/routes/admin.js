@@ -11,5 +11,6 @@ router.post('/add-exercise', adminController.postExercise);
 
 router.get('/:exerciseId', adminController.getExercise);
 
+router.post('/delete', adminController.postDelete);
 
 module.exports = router;

@@ -12,6 +12,15 @@
           <h1><%= exercise.name %></h1>
           <img src="<%= exercise.image %>" alt="<%= exercise.name%>">
           <p><%= exercise.description %></p>
+
+          <div>
+            <form action="/delete" method="POST">
+              <div>
+                <input type="hidden" name="exerciseId" value="<%= exercise.id %>">
+                <button>Delete</button>
+              </div>
+            </form>
+          </div>
         </main>
     </body>
 </html>
