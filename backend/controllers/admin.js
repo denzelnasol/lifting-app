@@ -1,11 +1,27 @@
 const Exercise = require('../models/Exercise');
 
-// exports.getIndex = async (req, res) => {
-//     const exercise
-// }
+exports.getIndex = async (req, res) => {
+    const exercise = await Exercise.find((data) => data);
 
-exports.getIndex = (req, res) => {
-    res.status(200).render('index');
+    try {
+        console.log(exercise);
+        res.status(200).render('index', {exercise: exercise});
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+exports.getExercise = async (req, res) => {
+    const exerciseId = req.params.exerciseId;
+
+    const exercise = await Exercise.findById(exerciseId, (exercise) => exercise);
+
+    try {
+        console.log(exercise);
+        res.status(200).render('exercise', {exercise: exercise});
+    } catch (err) {
+        console.log(err);
+    }
 };
 
 exports.getAddExercise = (req, res) =>  {

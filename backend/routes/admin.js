@@ -9,5 +9,7 @@ router.get('/add-exercise', adminController.getAddExercise);
 
 router.post('/add-exercise', adminController.postExercise);
 
+router.get('/:exerciseId', adminController.getExercise);
+
 
 module.exports = router;
