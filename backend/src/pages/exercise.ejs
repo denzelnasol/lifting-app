@@ -10,7 +10,7 @@
 
         <main>
           <h1><%= exercise.name %></h1>
-          <img src="<%= exercise.image %>" alt="<%= exercise.name%>">
+          <img src="<%= exercise.image %>" alt="<%= exercise.name %>">
           <p><%= exercise.description %></p>
 
           <div>
@@ -20,6 +20,9 @@
                 <button>Delete</button>
               </div>
             </form>
+          </div>
+          <div>
+            <a href="/edit-exercise/<%= exercise.id %>?edit=true">Edit</a>
           </div>
         </main>
     </body>

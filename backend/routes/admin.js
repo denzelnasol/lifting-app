@@ -7,7 +7,11 @@ router.get('/', adminController.getIndex);
 
 router.get('/add-exercise', adminController.getAddExercise);
 
+router.get('/edit-exercise/:exerciseId', adminController.getEditExercise);
+
 router.post('/add-exercise', adminController.postExercise);
+
+router.post('/edit-exercise', adminController.postEditExercise);
 
 router.get('/:exerciseId', adminController.getExercise);
 

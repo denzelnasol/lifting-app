@@ -25,7 +25,29 @@ exports.getExercise = async (req, res) => {
 };
 
 exports.getAddExercise = (req, res) =>  {
-    res.status(200).render('edit-exercise');
+    res.status(200).render('edit-exercise', {editing: false});
+};
+
+exports.getEditExercise = async (req, res) => {
+  const exerciseId = req.params.exerciseId;
+
+  const editMode = req.query.edit;
+
+  if (!editMode) {
+    return res.redirect('/');
+  }
+
+  const exercise = await Exercise.findById(exerciseId);
+
+  try {
+    if (!exerciseId) {
+      return res.redirect('/');
+    }
+    console.log(exercise);
+    res.status(200).render('edit-exercise', { exercise: exercise, editing: editMode});
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 exports.postExercise = (req, res) => {
@@ -35,6 +57,27 @@ exports.postExercise = (req, res) => {
     exercise.save();
     console.log('Exercise added to database');
     res.status(201).redirect('/');
+};
+
+exports.postEditExercise = (req, res) => {
+  const exerciseId = req.body.exerciseId;
+  const { name, image, description } = req.body;
+
+  Exercise.findById(exerciseId)
+  .then((exercise) => {
+    exercise.name = name;
+    exercise.image = image;
+    exercise.description = description;
+
+    return exercise.save();
+  })
+  .then(() => {
+    console.log('Item Updated');
+    res.status(201).redirect('/');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 };
 
 exports.postDelete = async (req, res) => {

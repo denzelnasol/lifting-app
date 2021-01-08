@@ -3,26 +3,33 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Add Exercise</title>
+        <title>
+          <% if(editing){ %>Edit Exercise<% } else { %>Add Exercise<% } %>
+        </title>
     </head>
     <body>
-        <h1>Add Exercise</h1>
+        <h1><% if(editing){ %>Edit Exercise<% } else { %>Add Exercise<% } %></h1>
 
-        <form method="POST" action="/add-exercise">
+        <form method="POST" action="/<% if(editing){ %>edit-exercise<% } else { %>add-exercise<% } %>">
             <div>
                 <label>Name</label>
-                <input type="text" name="name" required />
+                <input type="text" name="name" value="<% if(editing){ %><%= exercise.name %><% } %>" required />
             </div>
             <div>
                 <label>Image</label>
-                <input type="text" name="image" required />
+                <input type="text" name="image" value="<% if(editing){ %><%= exercise.image %><% } %>" required />
             </div>
             <div>
                 <label>Description</label>
-                <input type="text" name="description" required />
+                <input type="text" name="description" value="<% if(editing){ %><%= exercise.description %><% } %>" required />
             </div>
+            <% if(editing){ %>
+              <div>
+                <input type="hidden" name="exerciseId" value="<%= exercise.id %>"/>
+              </div>
+            <% } %>
             <div>
-                <button type="submit">Add Exercise</button>
+                <button type="submit"><%if(editing) { %>Edit Exercise <%} else { %>Add Exercise<% } %></button>
             </div>
         </form>
     </body>
