@@ -5,7 +5,9 @@ exports.getIndex = async (req, res) => {
 
     try {
         console.log(exercise);
-        res.status(200).render('index', {exercise: exercise});
+        //res.status(200).render('index', {exercise: exercise});
+
+        res.json(exercise);
     } catch (err) {
         console.log(err);
     }
@@ -56,7 +58,8 @@ exports.postExercise = (req, res) => {
     const exercise = new Exercise({ name: name, image: image, description: description});
     exercise.save();
     console.log('Exercise added to database');
-    res.status(201).redirect('/');
+
+    res.status(201).redirect('http://localhost:3000');
 };
 
 exports.postEditExercise = (req, res) => {
