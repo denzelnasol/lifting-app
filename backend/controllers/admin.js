@@ -5,9 +5,11 @@ exports.getIndex = async (req, res) => {
 
     try {
         console.log(exercise);
+
         //res.status(200).render('index', {exercise: exercise});
 
         res.json(exercise);
+
     } catch (err) {
         console.log(err);
     }
