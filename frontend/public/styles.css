@@ -1,11 +1,13 @@
 body {
   text-align: center;
+  background-color: red;
 }
 
 /* Navigation Bar */
 
 .navbar {
   padding: 0 0 4.5rem;
+  background-color: green;
 }
 
 .navbar-brand {
