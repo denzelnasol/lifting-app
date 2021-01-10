@@ -1,12 +1,16 @@
 import React from "react";
+import {Card, Button} from 'react-bootstrap';
 
 function Exercise(props) {
     return (
-    <div className="note">
-      <img src={props.img} alt={props.name}/>
-      <h1>{props.name}</h1>
-      <a href="/<%= data.id %>">View Exercise &#x21DB;</a>
-    </div>
+
+    <Card style={{ width: '10rem' }}>
+      <Card.Img className="card-img-top" varient="top" src={props.img} alt={props.name}/>
+      <Card.Body>
+        <Card.Title>{props.name}</Card.Title>
+        <Button href="/<%= data.id %>">View Exercise</Button>
+      </Card.Body>
+    </Card>
     );
 }
 

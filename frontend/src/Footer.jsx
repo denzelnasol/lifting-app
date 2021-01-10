@@ -4,11 +4,11 @@ var date = new Date();
 
 function Footer() {
     return (
-    <div>
-        <footer>
-            <p>Made by Denzel Nasol, {date.getFullYear()}</p>
-        </footer>
-    </div>
+    <footer>
+      <div className="container-fluid">
+        <p>Made by Denzel Nasol, {date.getFullYear()}</p>
+      </div>
+    </footer>
     );
 }
 
