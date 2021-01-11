@@ -1,43 +1,17 @@
-import React, { useEffect, useState} from 'react';
-import Exercise from "./ExerciseCard";
+import React from 'react';
 import Heading from "./../partials/Header";
 import Footer from "./../partials/Footer";
+import Exercises from "./Exercises";
 
-import {Container, Row} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 
 function MainPage() {
-  const [exercise, setExercise] = useState([]);
-
-  useEffect(() => {
-      const getAPI = async () => {
-          const response = await fetch('http://localhost:8080/');
-          const data = await response.json();
-
-          try {
-              console.log(data);
-              setExercise(data);
-          } catch (error) {
-              console.log(error);
-          }
-      };
-      getAPI();
-  }, []);
-
   return (
     <div>
       <Heading />
       <Container>
       <section>
-          <h2 id="exercises">List of Exercises</h2>
-          <Row>
-          {exercise.map((data) => (
-            <Exercise
-              key = {data._id}
-              name = {data.name}
-              img = {data.image}
-            />
-          ))}
-          </Row>
+        <Exercises />
       </section>
       </Container>
 

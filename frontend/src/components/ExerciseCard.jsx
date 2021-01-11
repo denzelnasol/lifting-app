@@ -10,7 +10,10 @@ function ExerciseCard(props) {
       <Card.Img className="card-img-top" varient="top" src={props.img} alt={props.name}/>
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
-        <Link to={`/exercises/${props.name}`}>
+        <Link to={{
+          pathname: `/exercises/${props.name}`
+          }}
+        >
           <Button variant="dark">View Exercise</Button>
         </Link>
       </Card.Body>
